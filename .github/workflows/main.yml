@@ -1,0 +1,19 @@
+name: Hello
+ 
+on: [push]
+ 
+jobs:
+  build:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Hello world
+        id: hello
+        uses: ./.github/action/hello-world
+        with:
+          who-to-greet: '名前を入れるyo'
+      - name: Get the output time
+        run: echo "The time was  ${{ steps.hello.outputs.time }}"
